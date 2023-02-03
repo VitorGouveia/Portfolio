@@ -1,5 +1,5 @@
 <a href="https://github.com/vitorgouveia/project-model" target="_blank" rel="noopener">
-  <img alt="Project Cover Image" src="assets/readme_cover_image.png" />
+  <img alt="Project Cover Image" src="assets/readme_cover.png" />
 </a>
 
 ---
