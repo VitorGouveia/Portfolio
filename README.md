@@ -23,7 +23,9 @@
   * [Complexity 2](#complexity-2)
 
 # Intro
-This project defines rules and guidelines to be followed by other projects.
+This project defines rules and guidelines to be followed by other projects. All internal projects should follow theses rules.
+
+This project-model should also facilitate de bootstrap of a new project as covers all product & project creation from scratch.
 
 # Design
 Inside this repository lies a highly customizable CSS framework to be used in internal projects.
