@@ -1,52 +1,86 @@
-# Project-Model
-Esse é um projeto que define regras a serem seguidas em outros projetos.
+<a href="https://github.com/vitorgouveia/project-model" target="_blank" rel="noopener">
+  <img alt="Project Cover Image" src="assets/readme_cover_image.png" />
+</a>
+
+---
+
+# Table of Contents
+- [Intro](#intro)
+- [Design](#design)
+  * [The design process](#the-design-process)
+  * [CSS framework](#css-framework)
+    + [Colors](#colors)
+    + [Spacing](#spacing)
+  * [Figma Template](#figma-template)
+- [Documentation](#documentation)
+  * [Interactive Readme](#interactive-readme)
+  * [Software](#software)
+  * [Product](#product)
+- [Technologies](#technologies)
+  * [Finding out my project complexity level](#finding-out-my-project-complexity-level)
+  * [Complexity 0](#complexity-0)
+  * [Complexity 1](#complexity-1)
+  * [Complexity 2](#complexity-2)
+
+# Intro
+This project defines rules and guidelines to be followed by other projects.
 
 # Design
-Foi criado um framework altamente customizável e pronto para ser utilizado nos projetos internos.
+Inside this repository lies a highly customizable CSS framework to be used in internal projects.
 
-Existem diversos presets que podem encaixar nesse framework.
+There are some pre-built presets to use with this framework.
 
-Abaixo explicamos um pouco sobre a metodologia de desenvolvimento de design.
+Read about the framework and how it works below:
 
-## Metodologia
+## The design process
 Style Guide => Design System => Ui Kit => Components
 
-## Framework CSS
+🚧 Work in progress 🚧
 
-### Cores
-### Espaçamentos
+## CSS framework
+🚧 Work in progress 🚧
+
+### Colors
+🚧 Work in progress 🚧
+### Spacing
+🚧 Work in progress 🚧
 
 ## Figma Template
+🚧 Work in progress 🚧
 
-Baixe o template aqui abaixo que possui todo nosso framework css dentro do figma utilizando variáveis CSS.
+Download the figma template that contains our whole CSS framework using CSS variables.
 
-<arquivo-aqui>
+<file>
 
-# Documentação
-Existem diversos templates de documentação prontos para serem utilizados.
+# Documentation
+🚧 Work in progress 🚧
+In the `documentation` folder you can find templates to be used for documentating your project.
 
-Cada template serve um propósito diferente.
+Each template serves a different purpose.
 
-## Readme Interativo
+## Interactive Readme
+🚧 Work in progress 🚧
 
-## Documentação de Software
-Essa categoria de documentação se refere ao software sendo construído, engloba as tecnologias e metodologias de desenvolvimento utilizadas.
+## Software
+The software documentation category refers to the code part of the project. It showcases technology and inovation by the dev team.
 
-## Documentação de Projeto
-Essa categoria de documentação se refere ao produto, metodologias utilizadas na criação da solução e não do software.
+## Product
+The product documentation category refers to the product part of the project. It should show the problem vs solution, biggest "selling points" and the business perspective of building.
 
-# Tecnologias
-Existem diversos templates de _tech stacks_ que devem ser utilizadas, cada template serve um propósito.
+# Technologies
+Inside the `tech` folder you can find templates to be used for the software.
 
-As _tech stacks_ são separadas em 3 níveis de complexidade, onde cada uma se afasta cada vez mais do básico (HTML, CSS, Javascript).
+Each tech stack serves a differente purpose.
 
-Sempre tente fazer as coisas da forma mais simples, utilizando _stacks_ com um nível de complexidade 0, e caso não seja suficiente, faça o upgrade para uma _stack_ com complexidade maior.
+The tech stacks are also divided in 3 (three) different complexity levels. The complexity levels are numbered from 0 onwards. The bigger the complexity level the more complex and far from the basic web technologies (HTML, CSS, Javascript) it is.
 
-## Descubra o nível de complexidade necessário
-Caso não saiba o nível de complexidade do aplicativo que está construindo, preencha o formulário e descubra já.
+> Always try the simple route. When simple is not enough, go up one stack. (disclaimer: if you have the correct sense of complexity of your application, then use the appropriate stack for it.)
 
-<formulário-aqui>
+## Finding out my project complexity level
+If you don't know how complex your app is, fill the form below and get a basic sense of it.
 
-## Complexidade 0
-## Complexidade 1
-## Complexidade 2
+<form link>
+
+## Complexity 0
+## Complexity 1
+## Complexity 2
