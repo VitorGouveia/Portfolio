@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@/ui/*": ["ui/*"],
-      "@/lib/*": ["lib/*"],
+      "@/lib/*": ["src/lib/*"],
       "@/styles/*": ["styles/*"]
     },
     "plugins": [
