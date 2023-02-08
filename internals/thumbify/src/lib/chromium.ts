@@ -1,4 +1,4 @@
-import puppeteer, { Page } from 'puppeteer-core';
+import type { Page } from 'puppeteer-core';
 import chrome from 'chrome-aws-lambda';
 
 const chromeExecPaths = {
@@ -39,12 +39,14 @@ export async function getOptions(isDev: boolean): Promise<Options> {
 let _page: Page | null;
 
 const getPage = async (isDev: boolean): Promise<Page> => {
+  const launch = await import('puppeteer-core').then((module) => module.launch);
+
   if (_page) {
     return _page;
   }
 
   const options = await getOptions(isDev);
-  const browser = await puppeteer.launch(options);
+  const browser = await launch(options);
 
   _page = await browser.newPage();
 

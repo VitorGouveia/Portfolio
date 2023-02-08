@@ -35,15 +35,117 @@ There are some pre-built presets to use with this framework.
 Read about the framework and how it works below:
 
 ## The design process
-Style Guide => Design System => Ui Kit => Components
+The design process is divided in 4 parts, each part being essential to a page creation flow:
 
-🚧 Work in progress 🚧
+[Style Guide](#style-guide) => [Design System](#design-system) => [Ui Kit](#ui-kit) => [Components](#components)
+
+### Style Guide
+The style-guide defines the tokens:
+
+- Colors
+- Spacing
+- Font-sizes
+- Font-families
+- Breakpoints
+
+### Design System
+These tokens can be later consumed by a design system, which you can think of as a theme of our application. Each theme would have a different design system.
+
+It needs to be this way because I realized some things can differ between themes (not only colors), and having more low-level control over the tokens inside the design system can help with making themes more customizable.
+
+An example would be a neumorphic theme, which changes shadows, border-radius and colors, these can only be modified if we have total control over our tokens and theme.
+
+Another thing is, making a light and dark themed website is more than just inverting colors, you have to make sure that the contrast is still good in all situations and maybe change the saturation of accent-colors.
+
+The design system gives names to the [style-guide](#style-guide) tokens and aims to minimize the number of variables it has to create.
+
+One example would be:
+
+(from style-guide)    (to design-system)
+colors-gray-900   =>  text-title
+
+(from style-guide)    (to design-system)
+colors-red-500    =>  danger-base
+
+(from style-guide)    (to design-system)
+spacing-200       =>  gap-base
+
+(from style-guide)    (to design-system)
+font-roboto       =>  font-reading
+
+You can see we don't actually care about the implementation details of fonts, colors or even spacings, we don't fill the design-system with numbers, this facilitates a lot, because you don't have to choose from an entire pallete of gray to color you text, you can just use the predefined variables from the theme.
+
+### Ui Kit
+A Ui Kit is predetermined set of global css that target specific elements and styles them according to the design. It uses the variables from the design-system to style these elements.
+
+Note that these elements from the ui kit are not reffered to as "components", since components is an abstract concept created by UI Frameworks.
+
+The point of the UI Kit is to leave the developer with an already styled and good looking page, even before he writes his first CSS.
+
+An example of some elements that are styled in the ui kit are:
+
+- Button
+- Input
+- Textarea
+- Form
+- Link
+- h1, h2, h3, h4, h5, h6
+- p, small
+
+### Components
+Components are the last level of our hierachy of styling, they compose the interfaces and do not come pre-built. Because they're components, they vary from framework to framework.
+
+But a base for building components should be:
+
+- Look out for accessibility features
+- Include visible :hover, :active and :focus/:focus-visible states
+- They should be tested against different color modes (contrast, colorblindness)
 
 ## CSS framework
-🚧 Work in progress 🚧
+The CSS framework is built upon some tools developed over the years by HyperDigital, as well as other 3rd-party tooling that comes with the javascript ecossystem such as tailwind.css, post.css and others.
+
+The CSS framework is being built inside the `/css` folder.
+
+The CSS framework uses SCSS by default, but also aims compatibility for LESS and Stylus pre-processor as they've shown expressive DX (Developer Experience) when compared to SCSS.
 
 ### Colors
-🚧 Work in progress 🚧
+In order to make color creation automatic a script was created to take care of colors. This script creates colors based on four parameters. But first, we need to understand the HSL color specification.
+
+HSL stands for hue, saturation and lightness and made color tweaking and creation a lot simpler.
+
+H - Color tone
+
+S - How vibrant is that color
+
+L - How much white is in that color
+
+The main benefit of HSL against any other color specification is that HSL allows us to programatically create colors in a declarative way that's easy to understand.
+
+The color creation script located inside the `colors` folder does one simple thing, it generates colors based on hue, satuation and lightness. Because we need to create a lot of color palletes for new projects we've already set up some templates for famous colors presets such as Pastel, Bebê or even Aquarella and over-saturated.
+
+The four parameters you need to supply to the `color-generator` are:
+
+- Hue
+- Saturation
+- Step
+- Initial Lightness
+
+With these parameters you can easily create beautiful looking color palletes for your `style-guide` such as the ones below:
+
+<colors-img>
+
+We also take part in 60-30-10 rule to make our design, that's why we tend to name colors with their role in the 60-30-10 rule.
+
+| **Color**      | **Role** |
+|----------------|----------|
+| Red            | Accent   |
+| Yellow         | Accent   |
+| Green          | Accent   |
+| Gray           | Primary  |
+| <brand-color>  | Accent   |
+
+Each color should have at least 9 different tones when generated via `color-generator`. 
+
 ### Spacing
 🚧 Work in progress 🚧
 

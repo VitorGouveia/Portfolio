@@ -1,8 +1,8 @@
 import { NextApiHandler } from 'next';
 import { z, ZodIssue } from 'zod';
 
-import { getThumbnailTemplate } from 'src/lib/thumbnail-template';
-import { getScreenshot } from 'src/lib/chromium';
+import { getThumbnailTemplate } from '@/lib/thumbnail-template';
+import { getScreenshot } from '@/lib/chromium';
 
 const isDev = !process.env.AWS_REGION;
 
