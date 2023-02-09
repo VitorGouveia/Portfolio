@@ -1,11 +1,19 @@
-import chrome from "chrome-aws-lambda";
-
 export const screenshot = async (url: string) => {
+  const executablePath = await import("chrome-aws-lambda").then(
+    (module) => module.default.executablePath
+  );
+  const args = await import("chrome-aws-lambda").then(
+    (module) => module.default.args
+  );
+  const headless = await import("chrome-aws-lambda").then(
+    (module) => module.default.headless
+  );
+
   const options = process.env.AWS_REGION
     ? {
-        args: chrome.args,
-        executablePath: await chrome.executablePath,
-        headless: chrome.headless,
+        args,
+        executablePath,
+        headless,
       }
     : {
         args: [],
