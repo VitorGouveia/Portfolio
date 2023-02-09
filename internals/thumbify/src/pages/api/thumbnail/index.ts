@@ -1,11 +1,10 @@
 import { screenshot } from "@/lib/puppeteer";
 import { query } from "@/lib/thumbnail";
-import { NextApiHandler } from "next";
+import type { NextApiHandler } from "next";
 
 const SITE_URL = process.env.SITE_URL;
 
 const handler: NextApiHandler = async (request, response) => {
-  console.log("logging");
   try {
     const { title, company, coverUrl, description } = query.parse(
       request.query
