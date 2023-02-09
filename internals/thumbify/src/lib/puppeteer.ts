@@ -1,4 +1,3 @@
-import puppeteer from "puppeteer-core";
 import chrome from "chrome-aws-lambda";
 
 export const screenshot = async (url: string) => {
@@ -18,7 +17,7 @@ export const screenshot = async (url: string) => {
             : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
       };
 
-  const browser = await puppeteer.launch(options);
+  const browser = await chrome.puppeteer.launch(options);
   const page = await browser.newPage();
   await page.setViewport({ width: 1920, height: 1080 });
   await page.goto(url, { waitUntil: "networkidle0" });
