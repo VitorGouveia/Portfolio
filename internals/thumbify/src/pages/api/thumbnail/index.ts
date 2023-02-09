@@ -30,6 +30,7 @@ const handler: NextApiHandler = async (request, response) => {
 
     return response.status(200).end(image);
   } catch (error) {
+    console.error(error);
     return response.status(500).send("Internal server error");
   }
 };

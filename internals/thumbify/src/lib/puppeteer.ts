@@ -1,10 +1,10 @@
-import chrome from "chrome-aws-lambda";
+import chrome from "@sparticuz/chromium-min";
 
 export const screenshot = async (url: string) => {
   const options = process.env.AWS_REGION
     ? {
         args: chrome.args,
-        executablePath: await chrome.executablePath,
+        executablePath: await chrome.executablePath(),
         headless: chrome.headless,
       }
     : {

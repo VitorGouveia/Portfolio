@@ -101,7 +101,7 @@ export default function Page() {
             <h1
               className={`text-center text-system-title text-6xl ${reading.className}`}
             >
-              {parsedQuery?.title}
+              <strong>{parsedQuery?.title}</strong>
             </h1>
             <p
               className={`text-center text-system-base text-3xl font-normal ${reading.className}`}
