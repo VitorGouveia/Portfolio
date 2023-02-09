@@ -1,75 +1,37 @@
-import { NextApiHandler } from 'next';
-import { z, ZodIssue } from 'zod';
+import { screenshot } from "@/lib/puppeteer";
+import { query } from "@/lib/thumbnail";
+import { NextApiHandler } from "next";
 
-import { getThumbnailTemplate } from '@/lib/thumbnail-template';
-import { getScreenshot } from '@/lib/chromium';
-
-const isDev = !process.env.AWS_REGION;
-
-type ZodError = Error & {
-  issues: ZodIssue[];
-};
-
-const query = z.object({
-  title: z.string(),
-  description: z.string(),
-  coverUrl: z.string(),
-  company: z.enum(['digicode', 'gotech', 'techwizard', 'vitorgouveia']),
-});
+const SITE_URL = process.env.SITE_URL;
 
 const handler: NextApiHandler = async (request, response) => {
+  console.log("logging");
   try {
-    // only allow requests from my github repo
-    const { title, description, coverUrl, company } = query.parse(
-      request.query,
+    const { title, company, coverUrl, description } = query.parse(
+      request.query
     );
 
-    const html = getThumbnailTemplate({
-      title,
-      description,
-      coverUrl,
-      company,
-    });
-
-    if (isDev) {
-      response.setHeader('Content-Type', 'text/html');
-
-      return response.end(html);
+    if (!SITE_URL) {
+      return response.status(500).send("Internal server error");
     }
 
-    const file = await getScreenshot(html, isDev);
+    const urlToScreenshot = new URL(`${SITE_URL}/thumbnail`);
 
-    response.setHeader('Content-type', 'image/png');
+    urlToScreenshot.searchParams.set("title", title);
+    urlToScreenshot.searchParams.set("description", description);
+    urlToScreenshot.searchParams.set("company", company);
+    urlToScreenshot.searchParams.set("coverUrl", coverUrl);
+
+    const image = await screenshot(urlToScreenshot.href);
+    response.setHeader("Content-Type", `image/jpeg`);
     response.setHeader(
-      'Cache-Control',
-      'public, immutable, no-transform, s-maxage=31536000, max-age=31536000',
+      "Cache-Control",
+      `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
     );
 
-    return response.status(200).end(file);
-  } catch (err) {
-    // console.error('error while gereration thumbnail', error);
-    const error = err as ZodError;
-
-    const ZOD_ERROR = 'ZodError';
-
-    if (error.name !== ZOD_ERROR) {
-      return response.status(500).send('Internal Server Error');
-    }
-
-    const [{ path, message, code }] = error.issues;
-    const [fieldName] = path;
-
-    if (code === 'invalid_enum_value') {
-      return response.status(500).send(`Invalid ${fieldName} value`);
-    }
-
-    if (message === 'Required') {
-      return response
-        .status(500)
-        .send(`${fieldName} is ${message.toLowerCase()} in query params`);
-    }
-
-    return response.status(500).send('Internal Server Error');
+    return response.status(200).end(image);
+  } catch (error) {
+    return response.status(500).send("Internal server error");
   }
 };
 
