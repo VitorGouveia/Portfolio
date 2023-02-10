@@ -57,7 +57,16 @@ const system = {
 
 const ONE_DAY_IN_SECONDS = 86400;
 
+const boldRubikFetch = fetch(
+  new URL("../../../assets/static/Rubik-Bold.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
+const regularRubikFetch = fetch(
+  new URL("../../../assets/static/Rubik-Regular.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
+
 const handler = async (request: NextRequest) => {
+  const boldRubik = await boldRubikFetch;
+  const regularRubik = await regularRubikFetch;
   const { searchParams } = new URL(request.url);
 
   let params: Record<string, string> = {};
@@ -86,6 +95,7 @@ const handler = async (request: NextRequest) => {
             alignItems: "center",
             justifyContent: "center",
             gap: "64px",
+            fontFamily: "Rubik",
           }}
         >
           <section
@@ -159,6 +169,20 @@ const handler = async (request: NextRequest) => {
       headers: {
         "Cache-Control": `s-maxage=${ONE_DAY_IN_SECONDS * 3}`,
       },
+      fonts: [
+        {
+          name: "Rubik",
+          data: boldRubik,
+          style: "normal",
+          weight: 700,
+        },
+        {
+          name: "Rubik",
+          data: regularRubik,
+          style: "normal",
+          weight: 400,
+        },
+      ],
     }
   );
 };

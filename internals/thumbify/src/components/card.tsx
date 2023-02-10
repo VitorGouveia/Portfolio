@@ -60,19 +60,35 @@ export const Card: FunctionComponent<z.infer<typeof query>> = ({
   return (
     <div
       style={{
-        backgroundImage: `
-            radial-gradient(circle at 25px 25px, hsla(0, 0%, 100%, 0.08) 2%, transparent 0%),
-            radial-gradient(circle at 75px 75px, hsla(0, 0%, 100%, 0.08) 2%, transparent 0%)
-          `,
-        backgroundSize: "100px 100px",
         background: system.background,
+        paddingInline: "min(10vw,160px)",
+        overflowY: "hidden",
       }}
-      className={`h-screen max-h-screen overflow-y-hidden py-20 px-[min(10vw,160px)] flex items-center justify-center`}
+      className="h-full w-full py-20 flex items-center justify-center"
     >
-      <main className="w-full max-w-[1600px] h-[900px] flex flex-col items-center justify-center gap-16">
+      <main
+        style={{
+          width: "100%",
+          maxWidth: "1600px",
+          height: "900px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "64px",
+          fontFamily: "Rubik",
+        }}
+      >
         <section
-          className="px-4 py-2 rounded-[8px] flex items-center gap-2 border"
-          style={{ borderColor: system.base }}
+          style={{
+            padding: "8px 16px",
+            borderRadius: "8px",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            border: "1px solid transparent",
+            borderColor: system.base,
+          }}
         >
           <div
             className="w-[64px] h-[64px] flex items-center justify-center"
@@ -82,8 +98,11 @@ export const Card: FunctionComponent<z.infer<typeof query>> = ({
           </div>
 
           <p
-            style={{ color: system.base }}
-            className={`text-[30px] font-normal`}
+            style={{
+              color: system.base,
+              fontWeight: "normal",
+              fontSize: "30px",
+            }}
           >
             A {company} company.
           </p>
@@ -91,8 +110,11 @@ export const Card: FunctionComponent<z.infer<typeof query>> = ({
 
         <header className="flex flex-col items-center gap-2">
           <h1
-            className={`text-center text-[60px]`}
-            style={{ color: system.title }}
+            style={{
+              color: system.title,
+              fontSize: "60px",
+              textAlign: "center",
+            }}
           >
             <strong>{title}</strong>
           </h1>
@@ -106,17 +128,16 @@ export const Card: FunctionComponent<z.infer<typeof query>> = ({
 
         <section
           style={{
-            overflow: "overlay",
             background: system.background,
             borderColor: system.support,
           }}
           className="flex items-center justify-center gap-16 w-full h-[420px] border border-system-support rounded-[8px]"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="w-full h-full object-cover brightness-90"
+            className="w-full h-full object-cover brightness-90 rounded-[8px]"
             src={coverUrl}
             alt="Banner image"
+            style={{ objectFit: "cover" }}
           />
         </section>
       </main>
