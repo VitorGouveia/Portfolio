@@ -55,6 +55,8 @@ const system = {
   background: "hsl(240, 3%, 6%)",
 };
 
+const ONE_DAY_IN_SECONDS = 86400;
+
 const handler = async (request: NextRequest) => {
   const { searchParams } = new URL(request.url);
 
@@ -154,6 +156,9 @@ const handler = async (request: NextRequest) => {
       width: 1920,
       height: 1080,
       status: 200,
+      headers: {
+        "Cache-Control": `s-maxage=${ONE_DAY_IN_SECONDS * 3}`,
+      },
     }
   );
 };
