@@ -1,7 +1,7 @@
-import { query } from "@/lib/thumbnail";
 import type { NextApiHandler } from "next";
 
 import chrome from "chrome-aws-lambda";
+import puppeteer from "puppeteer-core";
 
 const screenshot = async (url: string) => {
   const options = process.env.AWS_REGION
@@ -20,7 +20,7 @@ const screenshot = async (url: string) => {
             : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
       };
 
-  const browser = await chrome.puppeteer.launch(options);
+  const browser = await puppeteer.launch(options);
   const page = await browser.newPage();
   await page.setViewport({ width: 1920, height: 1080 });
   await page.goto(url, { waitUntil: "networkidle0" });
@@ -31,9 +31,10 @@ const SITE_URL = process.env.SITE_URL;
 
 const handler: NextApiHandler = async (request, response) => {
   try {
-    const { title, company, coverUrl, description } = query.parse(
-      request.query
-    );
+    const { title, company, coverUrl, description } = request.query;
+    // const { title, company, coverUrl, description } = query.parse(
+    //   request.query
+    // );
 
     if (!SITE_URL) {
       return response.status(500).send("Internal server error");
@@ -41,10 +42,10 @@ const handler: NextApiHandler = async (request, response) => {
 
     const urlToScreenshot = new URL(`${SITE_URL}/thumbnail`);
 
-    urlToScreenshot.searchParams.set("title", title);
-    urlToScreenshot.searchParams.set("description", description);
-    urlToScreenshot.searchParams.set("company", company);
-    urlToScreenshot.searchParams.set("coverUrl", coverUrl);
+    urlToScreenshot.searchParams.set("title", String(title));
+    urlToScreenshot.searchParams.set("description", String(description));
+    urlToScreenshot.searchParams.set("company", String(company));
+    urlToScreenshot.searchParams.set("coverUrl", String(coverUrl));
 
     const image = await screenshot(urlToScreenshot.href);
     response.setHeader("Content-Type", `image/jpeg`);
