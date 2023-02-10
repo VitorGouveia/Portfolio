@@ -6,9 +6,19 @@ import { query } from "@/lib/thumbnail";
 import chrome from "chrome-aws-lambda";
 import { withOGImage } from "next-api-og-image";
 
+const path = (() => {
+  let path = "";
+  const resolve = async () => {
+    path = await chrome.executablePath;
+  };
+
+  resolve();
+  return path;
+})();
+
 export default withOGImage({
   chrome: {
-    executable: await chrome.executablePath,
+    executable: path,
   },
   template: {
     react: (queryparams) => {
