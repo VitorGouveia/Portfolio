@@ -1,3 +1,6 @@
+/* eslint-disable @next/next/no-head-element */
+/* eslint-disable @next/next/no-sync-scripts */
+/* eslint-disable @next/next/no-page-custom-font */
 import { Card } from "@/components/card";
 import { query } from "@/lib/thumbnail";
 import { withOGImage } from "next-api-og-image";
@@ -32,7 +35,7 @@ export default withOGImage({
   type: "jpeg",
   quality: 70,
   dev: {
-    inspectHtml: true,
+    inspectHtml: false,
   },
   width: 1920,
   height: 1080,
