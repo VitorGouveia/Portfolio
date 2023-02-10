@@ -42,11 +42,11 @@ The design process is divided in 4 parts, each part being essential to a page cr
 ### Style Guide
 The style-guide defines the tokens:
 
-- Colors
-- Spacing
-- Font-sizes
-- Font-families
-- Breakpoints
+- Colors (100 to 900)
+- Spacing (100 to 900)
+- Font-sizes (100 to 900)
+- Font-families (names)
+- Breakpoints (mobile to desktop)
 
 ### Design System
 These tokens can be later consumed by a design system, which you can think of as a theme of our application. Each theme would have a different design system.
@@ -59,19 +59,15 @@ Another thing is, making a light and dark themed website is more than just inver
 
 The design system gives names to the [style-guide](#style-guide) tokens and aims to minimize the number of variables it has to create.
 
-One example would be:
+Examples:
 
-(from style-guide)    (to design-system)
-colors-gray-900   =>  text-title
-
-(from style-guide)    (to design-system)
-colors-red-500    =>  danger-base
-
-(from style-guide)    (to design-system)
-spacing-200       =>  gap-base
-
-(from style-guide)    (to design-system)
-font-roboto       =>  font-reading
+| **Style-guide**     | **Design-system** |
+|------------------   |-------------------|
+| colors-gray-900     | text-title        |
+| colors-red-500      | danger-base       |
+| spacing-200         | gap-base          |
+| font-roboto         | font-reading      |
+| breakpoints-mobile  | breakpoints-small |
 
 You can see we don't actually care about the implementation details of fonts, colors or even spacings, we don't fill the design-system with numbers, this facilitates a lot, because you don't have to choose from an entire pallete of gray to color you text, you can just use the predefined variables from the theme.
 
@@ -94,6 +90,8 @@ An example of some elements that are styled in the ui kit are:
 
 ### Components
 Components are the last level of our hierachy of styling, they compose the interfaces and do not come pre-built. Because they're components, they vary from framework to framework.
+
+They inherit styling from the [ui kit](#ui-kit) and only add needed styling on top.
 
 But a base for building components should be:
 
@@ -147,7 +145,11 @@ We also take part in 60-30-10 rule to make our design, that's why we tend to nam
 Each color should have at least 9 different tones when generated via `color-generator`. 
 
 ### Spacing
-🚧 Work in progress 🚧
+Spacing defines all the parts of the UI that need, believe it or not, *spacing*.
+
+Properties such as `padding`, `margin`, `gap`, `border-width`, `border-radius` are all going to be fed the `spacing` token from the [style-guide](#style-guide)
+
+The spacing scale works similar to the color lightness scale, you have a initial value and a step. The `spacing-generator` will generate 9 of these spacing, those should be sufficient for you to use throughout your whole app.
 
 ## Figma Template
 🚧 Work in progress 🚧
@@ -157,7 +159,6 @@ Download the figma template that contains our whole CSS framework using CSS vari
 <file>
 
 # Documentation
-🚧 Work in progress 🚧
 In the `documentation` folder you can find templates to be used for documentating your project.
 
 Each template serves a different purpose.
@@ -186,5 +187,39 @@ If you don't know how complex your app is, fill the form below and get a basic s
 <form link>
 
 ## Complexity 0
+Complexity 0 refers to the bare bones of the web, HTML, CSS and Javascript, nothing more.
+
+### Tools
+
+- Typescript
+- Parcel
+- PostCSS
+  - Autoprefixer
+  - TailwindCSS
+
+
 ## Complexity 1
+Complexity 1 introduces heavy data fetching combined with the use of interaction of the user with an API. But no need to have great SEO or render content on the server side
+
+### Tools
+
+- Solid.js
+- PostCSS
+  - Autoprefixer
+  - TailwindCSS
+
 ## Complexity 2
+Complexity 2 is the most complex stack, combining front-end, back-end and database work/management all in one.
+
+### Tools
+
+- Typescript
+- Next.js
+- Supabase
+- SWR
+- Turbopack
+- Prisma
+  - Postgres
+- PostCSS
+  - Autoprefixer
+  - TailwindCSS
