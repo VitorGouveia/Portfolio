@@ -1,5 +1,5 @@
 <a href="https://github.com/vitorgouveia/project-model" target="_blank" rel="noopener">
-  <img alt="Project Cover Image" src="https://thumbify.vercel.app/api/thumbnail.png?company=digicode&title=project%20model&description=hello%20world" />
+  <img alt="Project Cover Image" src="https://thumbify.vercel.app/api/thumbnail.png?company=digicode&title=Blueprint&description=Guidelines%20and%20rules%20to%20be%20followed%20by%20other%20projects." />
 </a>
 
 ---
