@@ -12,14 +12,14 @@
     "@next/font": "13.1.6",
     "chrome-aws-lambda": "10.1.0",
     "next": "13.1.6",
-    "puppeteer-core": "^19.6.3",
+    "puppeteer-core": "5.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "^3.20.6"
   },
   "devDependencies": {
     "@types/node": "18.13.0",
-    "@types/puppeteer-core": "^7.0.4",
+    "@types/puppeteer-core": "2.0.0",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "autoprefixer": "^10.4.13",
