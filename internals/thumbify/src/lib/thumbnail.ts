@@ -10,3 +10,5 @@ export const query = z.object({
   coverUrl: z.string().url(),
   company: z.enum(companies),
 });
+
+export type Keys = keyof typeof query._output;
