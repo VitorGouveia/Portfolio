@@ -6,6 +6,9 @@ import { query } from "@/lib/thumbnail";
 import { withOGImage } from "next-api-og-image";
 
 export default withOGImage({
+  chrome: {
+    executable: "/usr/bin/chromium-browser",
+  },
   template: {
     react: (queryparams) => {
       return (
