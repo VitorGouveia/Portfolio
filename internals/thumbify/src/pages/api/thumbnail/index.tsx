@@ -3,11 +3,12 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { Card } from "@/components/card";
 import { query } from "@/lib/thumbnail";
+import chrome from "chrome-aws-lambda";
 import { withOGImage } from "next-api-og-image";
 
 export default withOGImage({
   chrome: {
-    executable: "/usr/bin/chromium-browser",
+    executable: await chrome.executablePath,
   },
   template: {
     react: (queryparams) => {
