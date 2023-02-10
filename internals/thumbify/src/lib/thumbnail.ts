@@ -7,7 +7,7 @@ export type Company = typeof companies[number];
 export const query = z.object({
   title: z.string(),
   description: z.string(),
-  coverUrl: z.string().url(),
+  coverUrl: z.string().url().optional(),
   company: z.enum(companies),
 });
 

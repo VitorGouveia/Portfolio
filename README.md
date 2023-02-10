@@ -1,13 +1,18 @@
 <a href="https://github.com/vitorgouveia/project-model" target="_blank" rel="noopener">
-  <img alt="Project Cover Image" src="assets/readme_cover.png" />
+  <img alt="Project Cover Image" src="https://thumbify.vercel.app/api/thumbnail.png?company=digicode&title=project%20model&description=hello%20world" />
 </a>
 
 ---
 
 # Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Intro](#intro)
 - [Design](#design)
   * [The design process](#the-design-process)
+    + [Style Guide](#style-guide)
+    + [Design System](#design-system)
+    + [Ui Kit](#ui-kit)
+    + [Components](#components)
   * [CSS framework](#css-framework)
     + [Colors](#colors)
     + [Spacing](#spacing)
@@ -19,8 +24,11 @@
 - [Technologies](#technologies)
   * [Finding out my project complexity level](#finding-out-my-project-complexity-level)
   * [Complexity 0](#complexity-0)
+    + [Tools](#tools)
   * [Complexity 1](#complexity-1)
+    + [Tools](#tools-1)
   * [Complexity 2](#complexity-2)
+    + [Tools](#tools-2)
 
 # Intro
 This project defines rules and guidelines to be followed by other projects. All internal projects should follow theses rules.
@@ -140,7 +148,7 @@ We also take part in 60-30-10 rule to make our design, that's why we tend to nam
 | Yellow         | Accent   |
 | Green          | Accent   |
 | Gray           | Primary  |
-| <brand-color>  | Accent   |
+| brand-color    | Accent   |
 
 Each color should have at least 9 different tones when generated via `color-generator`. 
 
@@ -209,7 +217,7 @@ Complexity 1 introduces heavy data fetching combined with the use of interaction
   - TailwindCSS
 
 ## Complexity 2
-Complexity 2 is the most complex stack, combining front-end, back-end and database work/management all in one.
+Complexity 2 is the most complex stack, combining front-end, back-end, database and SEO work/management all in one.
 
 ### Tools
 

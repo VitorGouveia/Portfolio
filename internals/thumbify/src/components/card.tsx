@@ -126,20 +126,22 @@ export const Card: FunctionComponent<z.infer<typeof query>> = ({
           </p>
         </header>
 
-        <section
-          style={{
-            background: system.background,
-            borderColor: system.support,
-          }}
-          className="flex items-center justify-center gap-16 w-full h-[420px] border border-system-support rounded-[8px]"
-        >
-          <img
-            className="w-full h-full object-cover brightness-90 rounded-[8px]"
-            src={coverUrl}
-            alt="Banner image"
-            style={{ objectFit: "cover" }}
-          />
-        </section>
+        {coverUrl && (
+          <section
+            style={{
+              background: system.background,
+              borderColor: system.support,
+            }}
+            className="flex items-center justify-center gap-16 w-full h-[420px] border border-system-support rounded-[8px]"
+          >
+            <img
+              className="w-full h-full object-cover brightness-90 rounded-[8px]"
+              src={coverUrl}
+              alt="Banner image"
+              style={{ objectFit: "cover" }}
+            />
+          </section>
+        )}
       </main>
     </div>
   );
