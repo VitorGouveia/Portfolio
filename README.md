@@ -16,6 +16,7 @@
   * [CSS framework](#css-framework)
     + [Colors](#colors)
     + [Spacing](#spacing)
+    + [Fluid Typography](#fluid-typography)
   * [Figma Template](#figma-template)
 - [Documentation](#documentation)
   * [Interactive Readme](#interactive-readme)
@@ -159,7 +160,10 @@ Properties such as `padding`, `margin`, `gap`, `border-width`, `border-radius` a
 
 The spacing scale works similar to the color lightness scale, you have a initial value and a step. The `spacing-generator` will generate 9 of these spacing, those should be sufficient for you to use throughout your whole app.
 
-### Responsive Fonts
+### Fluid Typography
+A prototype is in development for a fluid typography system using `clamp`, so we never have to worry with media queries for dealing with fonts.
+
+In the current prototype they're being handled by the html (root font size) itself, so all elements and units automatically inherit the responsive font-size.
 
 ## Figma Template
 🚧 Work in progress 🚧
