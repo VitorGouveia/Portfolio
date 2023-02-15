@@ -159,6 +159,8 @@ Properties such as `padding`, `margin`, `gap`, `border-width`, `border-radius` a
 
 The spacing scale works similar to the color lightness scale, you have a initial value and a step. The `spacing-generator` will generate 9 of these spacing, those should be sufficient for you to use throughout your whole app.
 
+### Responsive Fonts
+
 ## Figma Template
 🚧 Work in progress 🚧
 

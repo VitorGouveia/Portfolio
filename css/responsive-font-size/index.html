@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Font Sizes - Digicode</title>
+  </head>
+  <body>
+    <script async>
+      const rem = 16;
+
+      const fontValue = font => {
+        let value = font;
+        const minDeviceWidth = 0 / rem;
+        const maxDeviceWidth = 1920 / rem;
+
+        // const minFont = 14 / rem;
+        const minFont = (value * 0.9) / rem;
+        const maxFont = (value * 1.3) / rem;
+        // const maxFont = 20 / rem;
+
+        const slope = (maxFont - minFont) / (maxDeviceWidth - minDeviceWidth);
+        const yAxisIntersection = -minDeviceWidth * slope + minFont;
+
+        return `
+        clamp(
+          ${minFont}rem,
+          ${yAxisIntersection}rem + ${slope * 100}vw,
+          ${maxFont}rem
+        )
+      `;
+      };
+      const title = document.createElement('h1');
+
+      title.textContent = 'Paragraph';
+      // title.style.fontSize = '16px';
+
+      const paragraph = document.createElement('p');
+
+      paragraph.textContent = 'Paragraph';
+      // paragraph.style.fontSize = fontValue(24);
+      // paragraph.style.fontSize = fontValue(32);
+
+      document.querySelector('html').style.fontSize = fontValue(20);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.append(title, paragraph);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Picker Builder</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: linear-gradient(#111, #222);
+    }
+
+    #colorwheel {
+      margin: 20px auto;
+      position: relative;
+      width: 640px;
+      height: 640px;
+    }
+
+    span {
+      cursor: pointer;
+      position: absolute;
+
+      top: 310px;
+      left: 420px;
+      width: 200px;
+      height: 20px;
+
+      transform-origin: -100px 50%;
+      opacity: 0.1;
+    }
+
+    span:hover, span:active {
+      opacity: 1;
+      border-top-right-radius: 100%;
+      border-bottom-right-radius: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="colorwheel"></div>
+  <div id="shades"></div>
+
+  <script defer>
+    // based off of https://codepen.io/CASEYJAYMARTIN/pen/AqvLGd
+    const colorSchemes = {
+      babyColor: {
+        saturation: 70,
+        lightness: 80
+      },
+      pastel: {
+        saturation: 40,
+        lightness: 70
+      },
+      oversaturated: {
+        saturation: 80,
+        lightness: 70
+      }
+    }
+
+    let scheme = colorSchemes.oversaturated
+
+    // const createShades = ({ hue, saturation }) => {
+    //   for (let i = 0; )
+    //   document.getElementById('shades').appendChild(color)
+    // }
+
+    const hueLimit = 360
+    for (var i = 0; i < hueLimit; i++) {
+      const color = document.createElement("span")
+
+      color.setAttribute("data-hue", i)
+
+      color.style.backgroundColor = `hsl(${i}, ${scheme.saturation}%, ${scheme.lightness}%)`
+      color.style.transform = `rotate(${270 + i}deg)`
+      color.onclick = (event) => {
+        console.log("selected color \t", `hsl(${i}, ${scheme.saturation}%, ${scheme.lightness}%)`)
+        createShades()
+      }
+
+      document.getElementById('colorwheel').appendChild(color)
+    };
+  </script>
+</body>
+</html>
