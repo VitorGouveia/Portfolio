@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- https://blog.logrocket.com/building-color-palette-css/ -->
+  <style>
+    :root {
+      --hue: 300; /* Let's try a different hue this time */
+      --hueComplement: calc(var(--hue) + 180);
+      --hueRightAnalogous: calc(var(--hue) + 30);
+      --hueLeftAnalogous: calc(var(--hue) - 30);
+
+      --primaryDark500: hsl(var(--hue) 20% 85%);
+      --primaryDark600: hsl(var(--hue) 20% 75%);
+      --secondaryLight500: hsl(var(--hueComplement) 5% 30%);
+      --secondaryLight900: hsl(var(--hueComplement) 5% 95%);
+      --accentV1: hsl(var(--hueRightAnalogous) 40% 40%);
+      --accentV1Light900: color-mix(in hsl, var(--accentV1) 20%, white 80%);
+      --accentV2: hsl(var(--hueLeftAnalogous) 40% 40%);
+      --accentV2Light900: color-mix(in hsl, var(--accentV2) 20%, white 80%);
+    }
+  </style>
+</head>
+<body>
+    <h1>Generate Colors</h1>
+
+    <div>
+      <input type="text" value="240">
+      <button data-submit>Gerar Cor</button>
+    </div>
+
+    
+
+    <script defer>
+      // https://codepen.io/_rahul/pen/dyKagre?editors=1100
+      function generateColors(hue) {
+        return {
+          complementaryColor: hue + 180,
+          rightAnalogousColor: hue + 30,
+          leftAnalogousColor: hue - 30,
+        }
+      }
+
+      function generatePalette({ hue, complementaryColor, leftAnalogousColor, rightAnalogousColor }) {
+        return {
+          primary: `hsl(${hue} 25% 97%)`,
+          primaryDark500: `hsl(${hue} 20% 85%)`,
+          primaryDark600: `hsl(${hue} 20% 75%)`,
+          secondary: `hsl(${complementaryColor} 5% 25%)`,
+          secondaryLight500: `hsl(${complementaryColor} 5% 30%)`,
+          secondaryLight900: `hsl(${complementaryColor} 5% 95%)`,
+          secondaryDark500: `hsl(${complementaryColor} 5% 20%)`,
+          accentV1: `hsl(${rightAnalogousColor} 40% 40%)`,
+          accentV1Light900: `hsl(${rightAnalogousColor} 40% 95%)`,
+          accentV2: `hsl(${leftAnalogousColor} 40% 40%)`,
+          accentV2Light900: `hsl(${leftAnalogousColor} 40% 90%)`,
+        }
+      }
+
+      /** @type {HTMLInputElement} */
+      const input = document.querySelector("input")
+      const button = document.querySelector("button[data-submit]")
+
+      button.addEventListener("click", () => {
+        const hue = Number(input.value)
+
+        const colors = generateColors(hue)
+
+        const palette = generatePalette({
+          ...colors,
+          hue,
+        })
+
+        document.body.style.background = palette.primary
+        document.body.style.color = palette.secondary
+      })
+    </script>
+</body>
+</html>
