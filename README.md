@@ -173,7 +173,7 @@ Download the figma template that contains our whole CSS framework using CSS vari
 <file>
 
 # Documentation
-In the `documentation` folder you can find templates to be used for documentating your project.
+In the [`documentation`](./documentation/readme.md) folder you can find templates to be used for documentating your project.
 
 Each template serves a different purpose.
 
